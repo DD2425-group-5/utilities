@@ -8,8 +8,9 @@ catkin_package(
 )
 
 # includes the catkin_ws/devel/include directory (I think?)
-include_directories(include)
+#include_directories(include)
+include_directories($ENV{HOME}/catkin_ws/src/project/utilities)
 
 add_executable(code src/code.cpp)
-target_link_libraries(code ${catkin_LIBRARIES} mylib tt)
+target_link_libraries(code ${catkin_LIBRARIES})
 add_dependencies(code ${catkin_EXPORTED_TARGETS})
