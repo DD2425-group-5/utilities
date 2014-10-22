@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package>
+  <name>visionutil</name>
+  <version>0.0.0</version>
+  <description>Package for vision utility libraries</description>
+
+  <maintainer email="ras@todo.todo">me</maintainer>
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roscpp</build_depend>
+  <run_depend>roscpp</run_depend>
+  <buildtool_depend>opencv2</buildtool_depend>
+  <run_depend>opencv2</run_depend>  
+
+  <export>
+  </export>
+</package>
