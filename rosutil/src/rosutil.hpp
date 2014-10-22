@@ -8,4 +8,5 @@ public:
     static void getParam(ros::NodeHandle handle, std::string paramName, double &paramVar);
     static void getParam(ros::NodeHandle handle, std::string paramName, std::string &paramVar);
     static void getParam(ros::NodeHandle handle, std::string paramName, float &paramVar);
+    static void getParam(ros::NodeHandle handle, std::string paramName, bool &paramVar);
 };

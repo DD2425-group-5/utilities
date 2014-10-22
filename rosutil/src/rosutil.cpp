@@ -18,6 +18,10 @@ void ROSUtil::getParam(ros::NodeHandle handle, std::string paramName, int &param
     getParamGeneric(handle, paramName, paramVar);
 }
 
+void ROSUtil::getParam(ros::NodeHandle handle, std::string paramName, bool &paramVar) {
+    getParamGeneric(handle, paramName, paramVar);
+}
+
 void ROSUtil::getParam(ros::NodeHandle handle, std::string paramName, double &paramVar) {
     getParamGeneric(handle, paramName, paramVar);
 }
