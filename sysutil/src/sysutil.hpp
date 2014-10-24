@@ -26,5 +26,6 @@ public:
     static std::string removeBaseName(std::string path);
     static std::string insertSuffix(std::string fileName, std::string suffix);
     static DirContents listDir(std::string path);
+    static std::vector<DirContents> getDirContents(std::string dirName);
 };
 

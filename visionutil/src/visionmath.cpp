@@ -1,4 +1,4 @@
-#include "math.hpp"
+#include "visionmath.hpp"
 
 void MathUtil::histogram(cv::Mat img, int nbins) {
     float min = std::numeric_limits<float>::max();

@@ -1,14 +1,13 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(visionutil)
+project(mathutil)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp
-  sensor_msgs
 )
 
 catkin_package(
-  LIBRARIES visionutil
+  LIBRARIES mathutil
   INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
-ADD_LIBRARY(visionutil src/visionmath.cpp)
+ADD_LIBRARY(mathutil src/math.cpp)
