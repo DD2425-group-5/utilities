@@ -17,15 +17,21 @@ public:
 	std::string path;
 	std::vector<std::string> dirs;
 	std::vector<std::string> files;
+	// bit of a hack for use in imageExtractor. Need to know whether the
+	// original path was used, or if this struct is a subdirectory on the
+	// path
+	bool isTop;
     };
 
     static bool isType(std::string path, mode_t mode);
     static bool isDir(std::string path);
     static bool isFile(std::string path);
     static std::string cleanDirPath(std::string path);
+    static std::string fullDirPath(std::string path);
     static std::string removeBaseName(std::string path);
     static std::string insertSuffix(std::string fileName, std::string suffix);
     static DirContents listDir(std::string path);
     static std::vector<DirContents> getDirContents(std::string dirName);
+    static bool queryUserYN(std::string question);
 };
 
