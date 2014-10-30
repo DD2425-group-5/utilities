@@ -39,18 +39,20 @@ Note: assumes gaussian model. See
 http://en.wikipedia.org/wiki/Multivariate_normal_distribution
 http://en.wikipedia.org/wiki/Sample_mean_and_sample_covariance
 */
+template <class T>
 struct color_model_vardim {
-    color_model_vardim() {}
-    color_model_vardim(int dims) {
-        mu = std::vector<float>(dims);
-        sigma = std::vector<std::vector<float> >(dims);
+    color_model_vardim() : dim(0) {}
+    color_model_vardim(int dims) : dim(dims) {
+        mu = std::vector<T>(dims);
+        sigma = std::vector<std::vector<T> >(dims);
         for(int i = 0; i < dims; ++i) {
-            sigma[i] = std::vector<float>(dims);
+            sigma[i] = std::vector<T>(dims);
         }
     }
 
-    std::vector<float> mu;
-    std::vector<std::vector<float> > sigma;
+    std::vector<T> mu;
+    std::vector<std::vector<T> > sigma;
+    int dim;
 
 };
 
