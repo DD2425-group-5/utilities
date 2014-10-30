@@ -9,10 +9,7 @@
 #include <cstdio>
 #include <cstring>
 
-class SysUtil {
-private:
-    SysUtil(){}
-public:
+namespace SysUtil {
     struct DirContents {
 	std::string path;
 	std::vector<std::string> dirs;
@@ -23,15 +20,15 @@ public:
 	bool isTop;
     };
 
-    static bool isType(std::string path, mode_t mode);
-    static bool isDir(std::string path);
-    static bool isFile(std::string path);
-    static std::string cleanDirPath(std::string path);
-    static std::string fullDirPath(std::string path);
-    static std::string removeBaseName(std::string path);
-    static std::string insertSuffix(std::string fileName, std::string suffix);
-    static DirContents listDir(std::string path);
-    static std::vector<DirContents> getDirContents(std::string dirName);
-    static bool queryUserYN(std::string question);
+    bool isType(std::string path, mode_t mode);
+    bool isDir(std::string path);
+    bool isFile(std::string path);
+    std::string cleanDirPath(std::string path);
+    std::string fullDirPath(std::string path);
+    std::string removeBaseName(std::string path);
+    std::string insertSuffix(std::string fileName, std::string suffix);
+    DirContents listDir(std::string path);
+    std::vector<DirContents> getDirContents(std::string dirName);
+    bool queryUserYN(std::string question);
 };
 
