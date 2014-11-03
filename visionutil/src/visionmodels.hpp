@@ -71,4 +71,8 @@ struct color_model_3d_indep {
     float std_g;
     float std_r;
 };
+
+template <class T>
+void rgb2rg_chromasity(T r, T g, T b, T& rc, T& gc);
+
 #endif // VISIONMODELS_HPP
