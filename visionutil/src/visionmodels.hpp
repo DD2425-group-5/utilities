@@ -76,9 +76,9 @@ namespace VisionModels {
     // define instances of the function that are called.
     template <typename T>
     void rgb2rg_chromaticity(T r, T g, T b, T& rc, T& gc) {
-	T intensity = r+b+g;
-	rc = r/intensity;
-	gc = g/intensity;
+        T intensity = r+b+g;
+        rc = r/intensity;
+        gc = g/intensity;
     }
 }
 
