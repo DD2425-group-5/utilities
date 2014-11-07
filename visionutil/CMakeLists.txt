@@ -13,4 +13,4 @@ catkin_package(
 
 #ADD_LIBRARY(visionutil src/visionmodels.cpp)
 
-ADD_LIBRARY(visionutil src/visionmodels.cpp src/visionmath.cpp)
+ADD_LIBRARY(visionutil src/visionmodels.cpp src/visionmath.cpp src/clustering.cpp)
