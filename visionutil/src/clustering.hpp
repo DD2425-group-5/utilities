@@ -10,6 +10,9 @@ namespace clustering {
 class Cluster;
 
 void cluster_img(const std::vector<cv::Vec2i> points, double dist, std::vector<Cluster>& clusters);
+void cluster_img_mat(const cv::Mat& img, float thresh, double dist, std::vector<Cluster>& clusters);
+void rows_sum(const cv::Mat& img, std::vector<float>& sums);
+void cols_sum(const cv::Mat& img, std::vector<float>& sums);
 Cluster get_biggest_cluster(std::vector<Cluster>& clusters);
 
 class Cluster {
@@ -36,6 +39,7 @@ public:
     }
 
     bool within_dist(double row, double col, double dist) {
+        //return dist >= row+col;
         return dist >= std::sqrt(std::pow(std::abs(row-this->row),2) + std::pow(std::abs(col-this->col),2));
     }
 
