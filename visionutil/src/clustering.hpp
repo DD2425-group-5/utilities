@@ -11,8 +11,8 @@ class Cluster;
 
 void cluster_img(const std::vector<cv::Vec2i> points, double dist, std::vector<Cluster>& clusters);
 void cluster_img_mat(const cv::Mat& img, float thresh, double dist, std::vector<Cluster>& clusters);
-void rows_sum(const cv::Mat& img, std::vector<float>& sums);
-void cols_sum(const cv::Mat& img, std::vector<float>& sums);
+void rows_sum(const cv::Mat& img, std::vector<float>& sums, float min_val);
+void cols_sum(const cv::Mat& img, std::vector<float>& sums, float min_val);
 Cluster get_biggest_cluster(std::vector<Cluster>& clusters);
 
 class Cluster {

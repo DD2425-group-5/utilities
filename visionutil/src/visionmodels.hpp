@@ -46,7 +46,7 @@ namespace VisionModels {
 	    mu = std::vector<T>(dims);
 	    sigma = std::vector<std::vector<T> >(dims);
 	    for(int i = 0; i < dims; ++i) {
-		sigma[i] = std::vector<T>(dims);
+            sigma[i] = std::vector<T>(dims);
 	    }
 	}
 

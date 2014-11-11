@@ -47,17 +47,36 @@ void cluster_img_mat(const cv::Mat& img, float thresh, double dist, std::vector<
 }
 
 /* Note: assumes sums is already initialized to sums.size==img.rows */
-void rows_sum(const cv::Mat& img, std::vector<float>& sums) {
+void rows_sum(const cv::Mat& img, std::vector<float>& sums, float min_val) {
+
     for(int i = 0; i < img.rows; ++i) {
-        sums[i] = cv::sum(img.row(i))[0];
+        cv::Mat row = img.row(i);
+        for(int j = 0; j < row.cols; ++j) {
+            float tmp = row.at<float>(0,j);
+            if(tmp >= min_val)
+                sums[i] += tmp;
+        }
+
+        //sums[i] = cv::sum(img.row(i))[0];
     }
 }
 
 /* Note: assumes sums is already initialized to sums.size==img.cols */
-void cols_sum(const cv::Mat& img, std::vector<float>& sums) {
+void cols_sum(const cv::Mat& img, std::vector<float>& sums, float min_val) {
     for(int i = 0; i < img.cols; ++i) {
-        sums[i] = cv::sum(img.col(i))[0];
+        cv::Mat col = img.col(i);
+        for(int j = 0; j < col.rows; ++j) {
+            float tmp = col.at<float>(0,j);
+            if(tmp >= min_val)
+                sums[i] += tmp;
+        }
+
+        //sums[i] = cv::sum(img.row(i))[0];
     }
+
+    /*for(int i = 0; i < img.cols; ++i) {
+        sums[i] = cv::sum(img.col(i))[0];
+    }*/
 }
 
 
