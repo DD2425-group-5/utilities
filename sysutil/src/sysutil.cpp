@@ -11,16 +11,20 @@ namespace SysUtil {
 	std::cout << question << std::endl;
 	string reply;
 	bool done = false;
+        bool result = false;
 	while (!done) {
 	    cin >> reply;
 	    if (reply.compare("y") == 0 || reply.compare("Y") == 0) {
-		return true;
+		result = true;
+                break;
 	    } else if (reply.compare("n") == 0 || reply.compare("N") == 0) {
-		return false;
+		result = false;
+                break;
 	    } else {
 		std::cout << "Please reply with y or n." << std::endl;
 	    }
 	}
+        return result;
     }
 
     bool isType(std::string path, mode_t mode) {
