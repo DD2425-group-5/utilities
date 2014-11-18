@@ -162,4 +162,22 @@ namespace SysUtil {
 	}
 	return dirs;
     }
+
+    /**
+     * Returns a string representation of the current date and time in the form
+     * YYYY-MM-DD_HH-MM-SS
+     */
+    std::string getDateTimeString(){
+        time_t rawTime;
+        time(&rawTime);
+        struct tm* timeinfo;
+        char ctime[100];
+        // get the current time
+        timeinfo = localtime(&rawTime);
+        // put it into a useful format
+        strftime(ctime, 100, "%F_%T", timeinfo);
+        std::string ret = std::string(ctime);
+        std::replace(ret.begin(), ret.end(), ':', '-');
+        return ret;
+    }
 }

@@ -30,5 +30,6 @@ namespace SysUtil {
     DirContents listDir(std::string path);
     std::vector<DirContents> getDirContents(std::string dirName);
     bool queryUserYN(std::string question);
+    std::string getDateTimeString();
 };
 
