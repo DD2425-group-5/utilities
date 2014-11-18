@@ -47,7 +47,27 @@ namespace SysUtil {
     bool isFile(std::string path) {
 	return isType(path, S_IFREG);
     }
-
+    
+    /**
+     * Creates a new directory at the given location if it does not already exist
+     */
+    bool makeDir(std::string path){
+        int r = mkdir(path.c_str(), S_IRWXU | S_IRWXG | S_IROTH);
+        
+        if (r == -1) {
+            if (errno == EEXIST){
+                std::cout << "Did not mkdir " << path << ": already exists." << std::endl;    
+            } else {
+                std::cout << "Did not mkdir " << path << ":";
+                perror("");
+            }
+            return false;
+        }
+        
+        std::cout << "Successfully created directory at " << path << std::endl;
+        return true;
+    }
+        
     /**
      * Removes the trailing slash from a directory path if there is one.
      */

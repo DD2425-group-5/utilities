@@ -7,6 +7,7 @@
 #include <map>
 #include <vector>
 #include <cstdio>
+#include <cerrno>
 #include <cstring>
 
 namespace SysUtil {
@@ -31,5 +32,6 @@ namespace SysUtil {
     std::vector<DirContents> getDirContents(std::string dirName);
     bool queryUserYN(std::string question);
     std::string getDateTimeString();
+    bool makeDir(std::string path);
 };
 
