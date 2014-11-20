@@ -1,6 +1,9 @@
 #include <pcl/common/common.h>
 #include <pcl/point_types.h>
+#include <pcl/sample_consensus/ransac.h>
+#include <pcl/sample_consensus/sac_model_line.h>
 #include <pcl_ros/point_cloud.h>
+
 
 namespace PCLUtil {
     template <typename T>
@@ -28,4 +31,6 @@ namespace PCLUtil {
 					      float scale);
 
     pcl::PointXYZRGB initXYZRGB(float x, float y, float z, int r, int g, int b);
+//    std::vector<pcl::PointXYZ> ransacFindLine(const std::vector<pcl::PointXYZ> points,
+//                                              float distanceThreshold);
 }

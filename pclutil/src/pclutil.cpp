@@ -50,4 +50,32 @@ namespace PCLUtil {
 	return p;
     }
 
+    // std::vector<pcl::PointXYZ> ransacFindLine(const std::vector<pcl::PointXYZ> points,
+    //                                           float distanceThreshold){
+    //     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZ>);
+    //     cloud->width = (int)points.size();
+    //     cloud->height = 1;
+    //     cloud->is_dense = false;
+    //     cloud->points.resize(cloud->width * cloud->height);
+        
+    //     // push all points in the vector into the cloud
+    //     for (size_t i = 0; i < points.size(); i++) {
+    //         cloud->push_back(points[i]);
+    //     }
+
+    //     std::vector<int> inliers;
+        
+    //     // Create the sample consensus object using the initialised cloud
+    //     pcl::SampleConsensusModelLine<pcl::PointXYZ>::Ptr 
+    //         modelLine(new pcl::SampleConsensusModelLine<pcl::PointXYZ>(cloud));
+        
+    //     pcl::RandomSampleConsensus<pcl::PointXYZ> ransac(modelLine);
+    //     ransac.setDistanceThreshold(distanceThreshold);
+    //     ransac.computeModel();
+    //     ransac.getInliers(inliers);
+
+    //     // Copy points on the line to the output cloud
+    //     pcl::PointCloud<pcl::PointXYZ>::Ptr extracted (new pcl::PointCloud<pcl::PointXYZ>);
+    //     pcl::copyPointCloud<pcl::PointXYZ>(*cloud, inliers, *extracted);
+    // }
 }
