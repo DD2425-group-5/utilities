@@ -1,3 +1,4 @@
+#include <iostream>
 #include <pcl/common/common.h>
 #include <pcl/point_types.h>
 #include <pcl/sample_consensus/ransac.h>
@@ -33,4 +34,8 @@ namespace PCLUtil {
     pcl::PointXYZRGB initXYZRGB(float x, float y, float z, int r, int g, int b);
 //    std::vector<pcl::PointXYZ> ransacFindLine(const std::vector<pcl::PointXYZ> points,
 //                                              float distanceThreshold);
+}
+
+pcl::PointXYZ operator+(pcl::PointXYZ p, pcl::PointXYZ q){
+    return pcl::PointXYZ(p.x + q.x, p.y + q.y, p.z + q.z);
 }
