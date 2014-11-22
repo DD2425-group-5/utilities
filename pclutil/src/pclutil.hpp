@@ -1,5 +1,6 @@
 #include <iostream>
 #include <pcl/common/common.h>
+#include <pcl/common/transforms.h>
 #include <pcl/point_types.h>
 #include <pcl/sample_consensus/ransac.h>
 #include <pcl/sample_consensus/sac_model_line.h>
@@ -25,16 +26,23 @@ namespace PCLUtil {
 	pcl::getMinMax3D(*cloud, min, max);
 	return CloudBounds<T>(min, max);
     }
-
+   
     bool pointInBounds(pcl::PointXYZRGB point, CloudBounds<pcl::PointXYZRGB> bounds);
 
     CloudBounds<pcl::PointXYZRGB> scaleBounds(CloudBounds<pcl::PointXYZRGB> bounds,
 					      float scale);
 
     pcl::PointXYZRGB initXYZRGB(float x, float y, float z, int r, int g, int b);
+    pcl::PointCloud<pcl::PointXYZ>::Ptr rotateCloud(pcl::PointCloud<pcl::PointXYZ>::Ptr cloudToRotate, 
+                                                                                  float angleToRotateTo);
+    
+    
 //    std::vector<pcl::PointXYZ> ransacFindLine(const std::vector<pcl::PointXYZ> points,
 //                                              float distanceThreshold);
 }
+
+
+
 
 pcl::PointXYZ operator+(pcl::PointXYZ p, pcl::PointXYZ q){
     return pcl::PointXYZ(p.x + q.x, p.y + q.y, p.z + q.z);

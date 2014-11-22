@@ -38,6 +38,7 @@ namespace PCLUtil {
 	return true;
     }
 
+    
     pcl::PointXYZRGB initXYZRGB(float x, float y, float z, int r, int g, int b){
 	pcl::PointXYZRGB p;
 	p.x = x;
@@ -49,6 +50,27 @@ namespace PCLUtil {
     
 	return p;
     }
+
+
+
+    /* rotate a single pcl::PointXYZ point */
+    pcl::PointCloud<pcl::PointXYZ>::Ptr rotateCloud(pcl::PointCloud<pcl::PointXYZ>::Ptr cloudToRotate, 
+                                                            float angleToRotateTo){
+       
+    //create the rotation transformation matrix
+    Eigen::Affine3f rotationMatrix = Eigen::Affine3f::Identity();
+    rotationMatrix.rotate (Eigen::AngleAxisf (angleToRotateTo, Eigen::Vector3f::UnitZ()));
+    
+    //Apply rotation
+    pcl::PointCloud<pcl::PointXYZ>::Ptr rotatedCloud (new pcl::PointCloud<pcl::PointXYZ> ());
+    pcl::transformPointCloud (*cloudToRotate, *rotatedCloud, rotationMatrix);
+    
+    return rotatedCloud;
+    
+    }
+
+
+
 
     // std::vector<pcl::PointXYZ> ransacFindLine(const std::vector<pcl::PointXYZ> points,
     //                                           float distanceThreshold){
