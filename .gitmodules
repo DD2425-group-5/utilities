@@ -1,0 +1,3 @@
+[submodule "occupancy_grid_utils"]
+	path = occupancy_grid_utils
+	url = https://github.com/clearpathrobotics/occupancy_grid_utils
