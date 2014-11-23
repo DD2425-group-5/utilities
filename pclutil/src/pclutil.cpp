@@ -65,4 +65,12 @@ namespace PCLUtil {
     
         return rotatedCloud;
     }
+
+    geometry_msgs::Point pclToGeomPoint(pcl::PointXYZ p){
+        geometry_msgs::Point q;
+        q.x = p.x;
+        q.y = p.y;
+        q.z = p.z;
+        return q;
+    }
 }

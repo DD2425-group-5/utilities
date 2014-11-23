@@ -3,7 +3,7 @@
 #include <pcl/common/transforms.h>
 #include <pcl/point_types.h>
 #include <pcl_ros/point_cloud.h>
-
+#include <geometry_msgs/Point.h>
 
 namespace PCLUtil {
     template <typename T>
@@ -33,6 +33,7 @@ namespace PCLUtil {
     pcl::PointXYZRGB initXYZRGB(float x, float y, float z, int r, int g, int b);
     pcl::PointCloud<pcl::PointXYZ>::Ptr rotateCloud(pcl::PointCloud<pcl::PointXYZ>::Ptr cloudToRotate, 
                                                                                   float angleToRotateTo);
+    geometry_msgs::Point pclToGeomPoint(pcl::PointXYZ p);
 }
 
 pcl::PointXYZ operator+(pcl::PointXYZ p, pcl::PointXYZ q){

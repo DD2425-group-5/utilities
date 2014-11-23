@@ -4,6 +4,7 @@ project(pclutil)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   pcl_ros
+  geometry_msgs
 )
 find_package(PCL REQUIRED)
 
@@ -15,5 +16,3 @@ catkin_package(
 include_directories(include ${catkin_INCLUDE_DIRS} ${PCL_INCLUDE_DIRS})
 
 ADD_LIBRARY(pclutil src/pclutil.cpp)
-
-# /usr/include/pcl-1.7/pcl/sample_consensus/impl/sac_model_line.hpp /usr/include/pcl-1.7/pcl/sample_consensus/impl/ransac.hpp)
