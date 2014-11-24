@@ -34,6 +34,7 @@ namespace PCLUtil {
     pcl::PointCloud<pcl::PointXYZ>::Ptr rotateCloud(pcl::PointCloud<pcl::PointXYZ>::Ptr cloudToRotate, 
                                                                                   float angleToRotateTo);
     geometry_msgs::Point pclToGeomPoint(pcl::PointXYZ p);
+    pcl::PointXYZ rotatePointAroundOriginXY(pcl::PointXYZ p, float angle);
 }
 
 pcl::PointXYZ operator+(pcl::PointXYZ p, pcl::PointXYZ q){

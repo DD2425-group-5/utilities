@@ -73,4 +73,21 @@ namespace PCLUtil {
         q.z = p.z;
         return q;
     }
+
+    /**
+     * Rotates a point around (0,0,0). The z coordinate is untouched by the rotation.
+     * Expects angle in degrees.
+     */
+    pcl::PointXYZ rotatePointAroundOriginXY(pcl::PointXYZ p, float angle){
+        float rad = (M_PI*angle)/180;
+        
+        float sin = std::sin(rad);
+        float cos = std::cos(rad);
+
+        // rotate point
+        float xrot = p.x * cos - p.y * sin;
+        float yrot = p.x * sin + p.y * cos;
+
+        return pcl::PointXYZ(xrot, yrot, 0);
+    }
 }
