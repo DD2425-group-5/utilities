@@ -1,5 +1,7 @@
 #include "geometry.hpp"
 
+namespace vision_geometry {
+
 std::vector<float> getRelativePosition(
         float camera_offset_x,
         float camera_offset_y,
@@ -47,4 +49,6 @@ std::vector<float> getRelativePosition(
     p[0] = x;
     p[1] = y;
     return p;
+}
+
 }

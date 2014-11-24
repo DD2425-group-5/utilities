@@ -6,9 +6,11 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
 )
 
+find_package(OpenCV REQUIRED)
+
 catkin_package(
   LIBRARIES visionutil
   INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
-ADD_LIBRARY(visionutil src/visionmodels.cpp src/visionmath.cpp src/clustering.cpp src/geometry.cpp)
+ADD_LIBRARY(visionutil src/visionmodels.cpp src/visionmath.cpp src/clustering.cpp)# src/geometry.cpp)
