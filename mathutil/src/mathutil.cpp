@@ -39,4 +39,10 @@ namespace MathUtil {
         b = -dx;
         c = y1 * dx - x1 * dy;
     }
+    
+    bool approxEqual(float a, float b, float epsilon){
+        return std::fabs(a - b) < epsilon;
+    }
+    
+        
 }
