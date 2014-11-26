@@ -106,7 +106,10 @@ namespace PCLUtil {
         float cos = std::cos(rad);
 
         // rotate point
-        y = x * cos - y * sin;
-        x = x * sin + y * cos;        
+        float tmpx = x * cos - y * sin;
+        float tmpy = x * sin + y * cos;
+        
+        x = tmpx;
+        y = tmpy;
     }
 }
