@@ -66,7 +66,7 @@ namespace PCLUtil {
         return rotatedCloud;
     }
 
-    geometry_msgs::Point pclToGeomPoint(pcl::PointXYZ p){
+    geometry_msgs::Point pclToGeomPoint(const pcl::PointXYZ& p){
         geometry_msgs::Point q;
         q.x = p.x;
         q.y = p.y;
@@ -78,16 +78,35 @@ namespace PCLUtil {
      * Rotates a point around (0,0,0). The z coordinate is untouched by the rotation.
      * Expects angle in degrees.
      */
-    pcl::PointXYZ rotatePointAroundOriginXY(pcl::PointXYZ p, float angle){
+    pcl::PointXYZ rotatePointAroundOriginXY(const pcl::PointXYZ& p, float angle){
+        float x = p.x;
+        float y = p.y;
+        // x and y modified in place
+        rotatePointAroundOriginXY(x, y, angle);
+        
+        return pcl::PointXYZ(x, y, 0);
+    }
+
+    geometry_msgs::Point rotatePointAroundOriginXY(const geometry_msgs::Point& p, float angle){
+        float x = p.x;
+        float y = p.y;
+        // x and y modified in place
+        rotatePointAroundOriginXY(x, y, angle);
+        geometry_msgs::Point ret;
+        ret.x = x;
+        ret.y = y;
+        
+        return ret;
+    }
+
+    void rotatePointAroundOriginXY(float& x, float& y, float angle){
         float rad = (M_PI*angle)/180;
         
         float sin = std::sin(rad);
         float cos = std::cos(rad);
 
         // rotate point
-        float xrot = p.x * cos - p.y * sin;
-        float yrot = p.x * sin + p.y * cos;
-
-        return pcl::PointXYZ(xrot, yrot, 0);
+        y = x * cos - y * sin;
+        x = x * sin + y * cos;        
     }
 }

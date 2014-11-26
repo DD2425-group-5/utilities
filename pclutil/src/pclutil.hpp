@@ -33,8 +33,10 @@ namespace PCLUtil {
     pcl::PointXYZRGB initXYZRGB(float x, float y, float z, int r, int g, int b);
     pcl::PointCloud<pcl::PointXYZ>::Ptr rotateCloud(pcl::PointCloud<pcl::PointXYZ>::Ptr cloudToRotate, 
                                                                                   float angleToRotateTo);
-    geometry_msgs::Point pclToGeomPoint(pcl::PointXYZ p);
-    pcl::PointXYZ rotatePointAroundOriginXY(pcl::PointXYZ p, float angle);
+    geometry_msgs::Point pclToGeomPoint(const pcl::PointXYZ& p);
+    pcl::PointXYZ rotatePointAroundOriginXY(const pcl::PointXYZ& p, float angle);
+    geometry_msgs::Point rotatePointAroundOriginXY(const geometry_msgs::Point& p, float angle);
+    void rotatePointAroundOriginXY(float& x, float& y, float angle);
 }
 
 pcl::PointXYZ operator+(pcl::PointXYZ p, pcl::PointXYZ q){
