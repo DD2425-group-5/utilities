@@ -4,6 +4,7 @@ project(pclutil)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   pcl_ros
+  geometry_msgs
 )
 find_package(PCL REQUIRED)
 

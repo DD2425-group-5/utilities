@@ -10,4 +10,4 @@ catkin_package(
   INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
-ADD_LIBRARY(mathutil src/math.cpp)
+ADD_LIBRARY(mathutil src/mathutil.cpp)

@@ -11,16 +11,20 @@ namespace SysUtil {
 	std::cout << question << std::endl;
 	string reply;
 	bool done = false;
+        bool result = false;
 	while (!done) {
 	    cin >> reply;
 	    if (reply.compare("y") == 0 || reply.compare("Y") == 0) {
-		return true;
+		result = true;
+                break;
 	    } else if (reply.compare("n") == 0 || reply.compare("N") == 0) {
-		return false;
+		result = false;
+                break;
 	    } else {
 		std::cout << "Please reply with y or n." << std::endl;
 	    }
 	}
+        return result;
     }
 
     bool isType(std::string path, mode_t mode) {
@@ -43,7 +47,27 @@ namespace SysUtil {
     bool isFile(std::string path) {
 	return isType(path, S_IFREG);
     }
-
+    
+    /**
+     * Creates a new directory at the given location if it does not already exist
+     */
+    bool makeDir(std::string path){
+        int r = mkdir(path.c_str(), S_IRWXU | S_IRWXG | S_IROTH);
+        
+        if (r == -1) {
+            if (errno == EEXIST){
+                std::cout << "Did not mkdir " << path << ": already exists." << std::endl;    
+            } else {
+                std::cout << "Did not mkdir " << path << ":";
+                perror("");
+            }
+            return false;
+        }
+        
+        std::cout << "Successfully created directory at " << path << std::endl;
+        return true;
+    }
+        
     /**
      * Removes the trailing slash from a directory path if there is one.
      */
@@ -157,5 +181,23 @@ namespace SysUtil {
 	    }
 	}
 	return dirs;
+    }
+
+    /**
+     * Returns a string representation of the current date and time in the form
+     * YYYY-MM-DD_HH-MM-SS
+     */
+    std::string getDateTimeString(){
+        time_t rawTime;
+        time(&rawTime);
+        struct tm* timeinfo;
+        char ctime[100];
+        // get the current time
+        timeinfo = localtime(&rawTime);
+        // put it into a useful format
+        strftime(ctime, 100, "%F_%T", timeinfo);
+        std::string ret = std::string(ctime);
+        std::replace(ret.begin(), ret.end(), ':', '-');
+        return ret;
     }
 }
