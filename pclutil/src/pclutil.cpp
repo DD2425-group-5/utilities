@@ -100,7 +100,25 @@ namespace PCLUtil {
     }
 
     void rotatePointAroundOriginXY(float& x, float& y, float angle){
-        float rad = (M_PI*angle)/180;
+        float tmpx;
+        float tmpy;
+
+        if(angle > 89 && angle < 91) {
+            tmpx = y;
+            tmpy = -x;
+        }
+
+        if(angle > 179 && angle < 181) {
+            tmpx = -x;
+            tmpy = -y;
+        }
+
+        if(angle < -89 && angle > -91) {
+            tmpx = -y;
+            tmpy = x;
+        }
+
+        /*float rad = (M_PI*angle)/180;
         
         float sin = std::sin(rad);
         float cos = std::cos(rad);
@@ -110,6 +128,6 @@ namespace PCLUtil {
         float tmpy = x * sin + y * cos;
         
         x = tmpx;
-        y = tmpy;
+        y = tmpy;*/
     }
 }
