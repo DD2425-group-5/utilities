@@ -126,8 +126,8 @@ namespace PCLUtil {
         // rotate point
         float tmpx = x * cos - y * sin;
         float tmpy = x * sin + y * cos;
-        
+        */
         x = tmpx;
-        y = tmpy;*/
+        y = tmpy;
     }
 }
