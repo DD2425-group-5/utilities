@@ -104,8 +104,8 @@ namespace PCLUtil {
         float tmpy;
 
         if(angle > 89 && angle < 91) {
-            tmpx = y;
-            tmpy = -x;
+            tmpx = -y;
+            tmpy = x;
         }
 
         if(angle > 179 && angle < 181) {
@@ -114,8 +114,8 @@ namespace PCLUtil {
         }
 
         if(angle < -89 && angle > -91) {
-            tmpx = -y;
-            tmpy = x;
+            tmpx = y;
+            tmpy = -x;
         }
 
         /*float rad = (M_PI*angle)/180;
