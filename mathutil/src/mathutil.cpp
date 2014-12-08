@@ -44,5 +44,14 @@ namespace MathUtil {
         return std::fabs(a - b) < epsilon;
     }
     
+    std::pair<float, float> rotateAroundOrigin(float x, float y, float angle){
+        float rad = (M_PI*angle)/180;
+        float sin = std::sin(rad);
+        float cos = std::cos(rad);
+
+        float newx = x * cos - y * sin;
+        float newy = x * sin + y * cos;
         
+        return std::pair<float, float>(newx, newy);
+    }
 }
