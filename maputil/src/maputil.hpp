@@ -35,4 +35,23 @@ namespace MapUtil {
     bool indexInBounds(const nav_msgs::MapMetaData& info, const int index);
     bool cellInBounds(const nav_msgs::MapMetaData& info, const Cell& c);
     int getIndexAtPoint(const nav_msgs::MapMetaData& info, const float x, const float y);
+
+    class Node {
+    public:
+        Node(float _x, float _y) : x(_x), y(_y){}
+        void addLink(const Node& n){
+            linked.push_back(n);
+        }
+        std::vector<Node> getLinked(){return linked;}
+    private:
+        float x, y; // position of the node in 2D
+        std::vector<Node> linked;
+        bool operator ==(const Node &other) const { // check if this node is equal to the given one
+            return MathUtil::approxEqual(x, other.x, 0.0001) && MathUtil::approxEqual(y, other.y, 0.0001);
+        }
+    };
+
+    class Graph {
+        std::vector<Node> nodes;
+    };
 }
