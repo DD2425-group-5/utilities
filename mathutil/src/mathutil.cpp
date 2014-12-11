@@ -77,21 +77,44 @@ namespace MathUtil {
         return Point(x, y);
     }
 
-    Bounds2D lineBounds(const Line& l){
-        return lineBounds(l.begin.x, l.begin.y, l.end.x, l.end.y);
+    Bounds2D lineBounds(const Line& l, float shrink){
+        return lineBounds(l.begin.x, l.begin.y, l.end.x, l.end.y, shrink);
     }
     
 
     /**
      * Find the min max of the points that make up a line. Return a line which
-     * goes from the minimum to the maximum. line.begin.x = minx, line.begin.y = miny,
-     * line.end.x = maxx, line.end.y = maxy
+     * goes from the minimum to the maximum. line.begin.x = minx, line.begin.y =
+     * miny, line.end.x = maxx, line.end.y = maxy. The shrink parameter defines
+     * how much is added (min) or subtracted from (max) the values found. This
+     * will reduce the size of the bounds
      */
-    Bounds2D lineBounds(float x1, float y1, float x2, float y2){
+    Bounds2D lineBounds(float x1, float y1, float x2, float y2, float shrink){
         float minX = x1 < x2 ? x1 : x2;
         float maxX = x1 > x2 ? x1 : x2;
         float minY = y1 < y2 ? y1 : y2;
         float maxY = y1 > y2 ? y1 : y2;
+
+        // if the line is horizontal or vertical, the shrinking should only be
+        // added in the horizontal or vertical direction, otherwise the bounding
+        // box of the line will be shifted somewhere that is not actually over
+        // the line.
+        if (approxEqual(minY, maxY, 0.00001)){
+            // if the line is horizontal, only the min and max x values should
+            // be shrunk
+            minX += shrink;
+            maxX -= shrink;
+        } else if (approxEqual(minX, maxX, 0.00001)){
+            // if the line is vertical, only the min and max y values should be
+            // shrunk
+            minY += shrink;
+            maxY -= shrink;
+        } else { // line is not horizontal or vertical, shrink all values
+            minX += shrink;
+            maxX -= shrink;
+            minY += shrink;
+            maxY -= shrink;
+        }
         
         Bounds2D minmax(minX, minY, maxX, maxY);
 
@@ -99,8 +122,8 @@ namespace MathUtil {
     }
 
     bool pointInBounds(const Point& p, const Bounds2D& b){
-        return p.x > b.min.x && p.x < b.max.x
-               && p.y > b.min.y && p.y < b.max.y;
+        return p.x >= b.min.x && p.x <= b.max.x
+               && p.y >= b.min.y && p.y <= b.max.y;
     }
     
     bool approxEqual(float a, float b, float epsilon){
